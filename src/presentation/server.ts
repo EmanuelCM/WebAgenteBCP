@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
+import fileUpload from "express-fileupload";
 
 interface Options {
   port: number;
@@ -31,6 +32,10 @@ export class Server {
     //* Middlewares
     this.app.use( express.json() ); // raw
     this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    this.app.use(fileUpload({
+      useTempFiles: true, // Habilita archivos temporales
+      tempFileDir: './uploads' // Directorio donde se almacenan temporalmente
+    })); 
 
     //* Public Folder
     this.app.use( express.static( this.publicPath ) );
