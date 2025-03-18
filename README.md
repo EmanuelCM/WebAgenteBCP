@@ -1,16 +1,87 @@
-# Rest Project + TypeScript
 
-Este proyecto previamente inicializado tiene todo lo necesario para trabajar con TypeScript, Express y Rest.
+# Agente BCP API
 
-Cada paso de su configuración ya se ha realizado previamente en el curso, por lo que solo es necesario clonar el proyecto y comenzar a trabajar.
+## Descripción
+API para el sistema Agente BCP que proporciona servicios de gestión y autenticación de usuarios.
 
+## Requisitos Previos
+- Node.js (v14 o superior)
+- MongoDB
+- npm o yarn
+- Cuenta de Gmail (para el servicio de correos)
 
 ## Instalación
 
-1. Clonar .env.template a .env y configurar las variables de entorno
-2. Ejecutar `npm install` para instalar las dependencias
-3. En caso de necesitar base de datos, configurar el docker-compose.yml y ejecutar `docker-compose up -d` para levantar los servicios deseados.
-4. Ejecutar `npm run dev` para levantar el proyecto en modo desarrollo
+1. Clonar el repositorio
+```bash
+git clone <url-del-repositorio>
+cd agente-bcp
+```
 
-# WebAgenteBCP
-# WebAgenteBCP
+2. Instalar dependencias
+```bash
+npm install
+# o
+yarn install
+```
+
+3. Configurar variables de entorno
+Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
+
+```env
+# Puerto del servidor
+PORT=3000
+
+# Configuración de MongoDB
+MONGO_URL=mongodb://mongo-user:123456@localhost:27017
+MONGO_DB_NAME=agentebcp
+
+# JWT
+JWT_SEED=mi_clave_super_secreta
+
+# Configuración del servicio de correos
+MAILERSERVICE=gmail
+MAILEREMAIL=your-email@gmail.com
+MAILERSECRETKEY=your-app-specific-password
+
+# URL del servicio web
+WEBSERVICE_URL=localhost:3000/api
+```
+
+### Desarrollo
+```bash
+npm run dev
+# o
+yarn dev
+```
+
+### Producción
+```bash
+npm run build
+npm start
+# o
+yarn build
+yarn start
+```
+
+## Endpoints Principales
+
+- `POST /api/auth/login` - Autenticación de usuarios
+- `POST /api/auth/register` - Registro de nuevos usuarios
+- `GET /api/users` - Obtener usuarios (requiere autenticación)
+
+Para más detalles sobre los endpoints disponibles, consulta la documentación de la API.
+
+## Scripts Disponibles
+
+- `npm run dev` - Inicia el servidor en modo desarrollo
+- `npm run build` - Compila el proyecto
+- `npm start` - Inicia el servidor en modo producción
+- `npm test` - Ejecuta las pruebas
+
+
+## Contacto
+
+Emanuel Chaupis - emanuel.chaupis1@gmail.com
+
+Link del proyecto: [https://github.com/your-username/agente-bcp](https://github.com/your-username/agente-bcp)
